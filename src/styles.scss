@@ -1,0 +1,25 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
+
+$primary_1: orange;
+$primary_2: grey;
+
+.LEFT {
+    background-color: $primary_1;
+}
+
+.RIGHT {
+    background-color: $primary_2;
+}
+
+.full-width {
+    width: 95%
+}
+
+.half-width {
+    width: 45%
+}
+
+.form-size {
+    width: 100%
+}
