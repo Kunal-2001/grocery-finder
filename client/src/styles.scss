@@ -1,25 +1,67 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
-$primary_1: orange;
-$primary_2: grey;
+$primary_1: #FF7300;
+$primary_2: #DFDFDF;
+$primary_3: #afadad;
+$primary_4: #939393;
 
 .LEFT {
     background-color: $primary_1;
+    font-family: 'Lobster', cursive;
+    color: $primary_2;
+    height: 100vh;
 }
 
 .RIGHT {
     background-color: $primary_2;
+    font-family: 'Lobster', cursive;
+    height: 100vh;
+    margin-top: auto;
+    .container .row {
+        margin: 20px 0 0 0;
+    }
 }
-
-.full-width {
-    width: 95%
-}
-
-.half-width {
-    width: 45%
+  
+.input_fields {
+    width: 80%
 }
 
 .form-size {
     width: 100%
 }
+
+.header_bt{
+    border-radius: 10px;
+    background-color: $primary_3;
+    height: fit-content;
+    margin: 10px;
+    width: 100px;
+}
+
+.collapse .btn:focus,.btn:active {
+    outline: none !important;
+    box-shadow: none;
+    // border-color: $primary_1;
+    // border-width: 1px;
+}
+
+.form_container {
+    width: 80%;
+    background-color: $primary_3;
+    border-radius: 40px;
+    form {
+        padding: 20px;
+        // input, textarea {
+        //     border: none;
+        //     overflow: auto;
+        //     outline: none;
+        //     background-color: $primary_4;
+        // }
+    }
+}
+
+// .mat-form-field-infix {
+//     background-color: $primary_4;
+// }

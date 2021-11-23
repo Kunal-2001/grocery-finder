@@ -1,37 +1,52 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-12 col-sm-6 LEFT">
-            <h3>Feedback</h3>
+        <div class="col-sm-6 LEFT text-center d-flex align-items-center">
+          <div class="container">
+            <h3>Send us your Feedback</h3>
+          </div>
         </div>
-        <div class="col-12 col-sm-6 RIGHT">
-            <div class="form-size">
-                <h3>Send us your Feedback</h3>
-                <p>{{ feedbackForm.value | json }} {{ feedbackForm.status | json }}</p>
+        <div class="col-sm-6 RIGHT text-center d-flex align-items-center">
+          <div class="container">
+            <div class="row">
+              <div class = "col-sm-1"></div>
+              <div class = "col-sm-10 form-size form_container">
                 <form novalidate [formGroup]="feedbackForm" #fform="ngForm" (ngSubmit)="onSubmit()">
-                    <p>
-                      <mat-form-field class="full-width">
-                        <input matInput formControlName="fullname" placeholder="Name" type="text" required>
-                        <mat-error *ngIf="formErrors.fullname">{{formErrors.fullname}}</mat-error>
-                      </mat-form-field>
-                    </p>
-                    <p> 
-                      <mat-form-field class="half-width">
-                        <input matInput formControlName="mobnum" placeholder="Mobile Number" type="tel" pattern="[0-9]*" required>
-                        <mat-error *ngIf="formErrors.mobnum">{{formErrors.mobnum}}</mat-error>
-                      </mat-form-field>
-                      <mat-form-field class="half-width">
-                        <input matInput formControlName="email" placeholder="Email" type="email" email required>
-                        <mat-error *ngIf="formErrors.email">{{formErrors.email}}</mat-error>
-                      </mat-form-field>
-                    </p>
-                    <p>
-                      <mat-form-field class="full-width">
-                        <textarea matInput formControlName="message" placeholder="Your Feedback" rows=12></textarea>
-                      </mat-form-field>
-                    </p>
-                    <button type="submit" mat-button class="background-primary text-floral-white">Submit</button>
-                  </form>
+                  <p>
+                    <mat-form-field class="input_fields">
+                      <input matInput formControlName="fullname" placeholder="Name" type="text" required>
+                      <mat-error *ngIf="formErrors.fullname">{{formErrors.fullname}}</mat-error>
+                    </mat-form-field>
+                  </p>
+                  <p> 
+                    <mat-form-field class="input_fields">
+                      <input matInput formControlName="mobnum" placeholder="Mobile Number" type="tel" pattern="[0-9]*" required>
+                      <mat-error *ngIf="formErrors.mobnum">{{formErrors.mobnum}}</mat-error>
+                    </mat-form-field>
+                  </p>
+                  <p> 
+                    <mat-form-field class="input_fields">
+                      <input matInput formControlName="email" placeholder="Email" type="email" email required>
+                      <mat-error *ngIf="formErrors.email">{{formErrors.email}}</mat-error>
+                    </mat-form-field>
+                  </p>
+                  <p>
+                    <mat-form-field class="input_fields">
+                      <textarea matInput formControlName="message" placeholder="Your Feedback" rows=5></textarea>
+                    </mat-form-field>
+                  </p>
+                </form>
+              </div>
+              <div class = "col-sm-1"></div>
             </div>
+            <div class="row">
+              <div class = "col-sm-5"></div>
+              <div class = "col-sm-2">
+                <button type="submit" mat-button class="background-primary text-floral-white" (click)="fform.ngSubmit.emit()" [disabled]="!fform.form.valid">Submit</button>
+              </div>
+              <div class = "col-sm-5"></div>
+            </div>
+          </div>
+          <!-- <p>{{ feedbackForm.value | json }} {{ feedbackForm.status | json }}</p> -->
         </div> 
     </div>
 </div>

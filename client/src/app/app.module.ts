@@ -17,6 +17,7 @@ import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 
 import { FeedbackService } from './services/feedback.service';
+import { ContactusComponent } from './contactus/contactus.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { FeedbackService } from './services/feedback.service';
     ProfileComponent,
     FeedbackComponent,
     AboutComponent,
-    HomeComponent
+    HomeComponent,
+    ContactusComponent
   ],
   imports: [
     BrowserModule,
