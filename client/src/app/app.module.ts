@@ -7,7 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -18,6 +18,10 @@ import { HomeComponent } from './home/home.component';
 
 import { FeedbackService } from './services/feedback.service';
 import { ContactusComponent } from './contactus/contactus.component';
+import { IndexComponent } from './index/index.component';
+import { MainHeaderComponent } from './main-header/main-header.component';
+
+import { baseURL } from './shared/baseurl';
 
 @NgModule({
   declarations: [
@@ -27,7 +31,9 @@ import { ContactusComponent } from './contactus/contactus.component';
     FeedbackComponent,
     AboutComponent,
     HomeComponent,
-    ContactusComponent
+    ContactusComponent,
+    IndexComponent,
+    MainHeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -37,10 +43,12 @@ import { ContactusComponent } from './contactus/contactus.component';
     MatFormFieldModule,
     FormsModule,
     MatInputModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [
-    FeedbackService
+    FeedbackService,
+    {provide: 'baseURL', useValue: baseURL}
   ],
   bootstrap: [AppComponent]
 })

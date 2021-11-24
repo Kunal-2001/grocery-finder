@@ -1,0 +1,128 @@
+<app-main-header></app-main-header>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-sm-6 LEFT text-center d-flex align-items-center">
+            <div class="container">
+            <h3>Left Index Works</h3>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 RIGHT text-center d-flex align-items-center">
+            <div class="container">
+                <h3>Right Index Works</h3>
+            </div>
+        </div> 
+    </div>
+</div>
+
+<div id="loginModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg" role="content">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Login</h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <form novalidate [formGroup]="loginForm" #lform="ngForm" (ngSubmit)="loginSubmit()">
+                    <p> 
+                        <mat-form-field class="input_fields">
+                            <input matInput formControlName="mobnum" placeholder="Mobile Number" type="tel" pattern="[0-9]*" required>
+                            <mat-error *ngIf="loginformErrors.mobnum">{{loginformErrors.mobnum}}</mat-error>
+                        </mat-form-field>
+                    </p>
+                    <p> 
+                        <mat-form-field class="input_fields">
+                            <input matInput formControlName="password" placeholder="Password" type="password" required>
+                            <mat-error *ngIf="loginformErrors.password">{{loginformErrors.password}}</mat-error>
+                        </mat-form-field>
+                    </p>
+                    <p>
+                        <button type="submit" mat-button class="background-primary text-floral-white" (click)="lform.ngSubmit.emit()" [disabled]="!lform.form.valid">Log In</button>
+                    </p>
+                  </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="registerModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg" role="content">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Register</h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>{{ registerForm.value | json }} {{ registerForm.status | json }}</p>
+                <form novalidate [formGroup]="registerForm" #rform="ngForm" (ngSubmit)="registerSubmit()">
+                    <p>
+                      <mat-form-field class="input_fields">
+                        <input matInput formControlName="fullname" placeholder="Name" type="text" required>
+                        <mat-error *ngIf="registerformErrors.fullname">{{registerformErrors.fullname}}</mat-error>
+                      </mat-form-field>
+                    </p>
+                    <p> 
+                      <mat-form-field class="input_fields">
+                        <input matInput formControlName="mobnum" placeholder="Mobile Number" type="tel" pattern="[0-9]*" required>
+                        <mat-error *ngIf="registerformErrors.mobnum">{{registerformErrors.mobnum}}</mat-error>
+                      </mat-form-field>
+                    </p>
+                    <p> 
+                      <mat-form-field class="input_fields">
+                        <input matInput formControlName="email" placeholder="Email" type="email" email required>
+                        <mat-error *ngIf="registerformErrors.email">{{registerformErrors.email}}</mat-error>
+                      </mat-form-field>
+                    </p>
+                    <p> 
+                        <mat-form-field class="input_fields">
+                            <input matInput formControlName="password" placeholder="Password" type="password" required>
+                            <mat-error *ngIf="registerformErrors.password">{{registerformErrors.password}}</mat-error>
+                        </mat-form-field>
+                    </p>
+                    <div class="input_fields">
+                        <input formControlName="shopadmin" type="checkbox" name="shopadmin" (click)="toggleformview()">
+                        <label for="shopadmin">Register As Shop Admin</label>
+                    </div>
+                    <div [hidden] = "!show_more_form">
+                        <p>
+                            <mat-form-field class="input_fields">
+                              <input matInput formControlName="shopname" placeholder="Shop Name" type="text">
+                              <mat-error *ngIf="registerformErrors.shopname">{{registerformErrors.shopname}}</mat-error>
+                            </mat-form-field>
+                        </p>
+                        <p>
+                            <mat-form-field class="input_fields">
+                              <input matInput formControlName="address" placeholder="Full Address" type="text">
+                              <mat-error *ngIf="registerformErrors.address">{{registerformErrors.address}}</mat-error>
+                            </mat-form-field>
+                        </p>
+                        <p>
+                            <mat-form-field class="input_fields">
+                              <input matInput formControlName="landmark" placeholder="Landmark" type="text">
+                              <mat-error *ngIf="registerformErrors.landmark">{{registerformErrors.landmark}}</mat-error>
+                            </mat-form-field>
+                        </p>
+                        <p>
+                            <mat-form-field class="input_fields">
+                              <input matInput formControlName="city" placeholder="City" type="city">
+                              <mat-error *ngIf="registerformErrors.city">{{registerformErrors.city}}</mat-error>
+                            </mat-form-field>
+                        </p>
+                        <p>
+                            <mat-form-field class="input_fields">
+                              <input matInput formControlName="state" placeholder="State" type="text">
+                              <mat-error *ngIf="registerformErrors.state">{{registerformErrors.state}}</mat-error>
+                            </mat-form-field>
+                        </p>
+                    </div>
+                    <p>
+                        <button type="submit" mat-button class="background-primary text-floral-white" (click)="rform.ngSubmit.emit()" [disabled]="!rform.form.valid">Register</button>
+                    </p>
+                  </form>
+            </div>
+        </div>
+    </div>
+</div>

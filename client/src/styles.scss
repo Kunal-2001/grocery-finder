@@ -23,6 +23,14 @@ $primary_4: #939393;
         margin: 20px 0 0 0;
     }
 }
+
+.modal-title {
+    font-family: 'Lobster', cursive;
+}
+
+.modal-header {
+    background-color: $primary_2;
+}
   
 .input_fields {
     width: 80%
@@ -65,3 +73,7 @@ $primary_4: #939393;
 // .mat-form-field-infix {
 //     background-color: $primary_4;
 // }
+
+.active {
+    background-color: $primary_1;
+}
