@@ -3,7 +3,11 @@
     <div class="row">
         <div class="col-12 col-sm-6 LEFT text-center d-flex align-items-center">
             <div class="container">
-            <h3>Left Home Works</h3>
+                <ejs-maps id="maps-container" style="display:block" [zoomSettings]="zoomSettings" [centerPosition]="centerPosition">
+                    <e-layers>
+                      <e-layer [layerType]="layerType" [bingMapType]="bingMapType" [key]="key" [markerSettings]="markerSettings" [navigationLineSettings]="navigationLineSettings"></e-layer>
+                    </e-layers>
+                </ejs-maps>
             </div>
         </div>
         <div class="col-12 col-sm-6 RIGHT text-center d-flex align-items-center">

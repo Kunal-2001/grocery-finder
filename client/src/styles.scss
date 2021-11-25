@@ -28,16 +28,46 @@ $primary_4: #939393;
     font-family: 'Lobster', cursive;
 }
 
+.login_modal {
+    padding: 0;
+    overflow: hidden;
+    svg {
+        position:absolute;
+    }
+    form {
+        width: 50%;
+        margin: 50px;
+        z-index: 1;
+    }
+}
+
+.register_modal {
+    padding: 0;
+    overflow: hidden;
+    svg {
+        position:absolute;
+    }
+    form {
+        width: 100%;
+        margin: 50px;
+        z-index: 1;
+    }
+}
+
 .modal-header {
     background-color: $primary_2;
 }
   
 .input_fields {
-    width: 80%
+    width: 100%
 }
 
 .form-size {
     width: 100%
+}
+
+.half-width {
+    width: 48%;
 }
 
 .header_bt{
@@ -70,10 +100,24 @@ $primary_4: #939393;
     }
 }
 
+.form_button {
+    float: right;
+    button {
+        background-color: $primary_1;
+        color: white;
+    }
+}
+
 // .mat-form-field-infix {
 //     background-color: $primary_4;
 // }
 
 .active {
     background-color: $primary_1;
+}
+
+.navbar-brand {
+    img {
+        width: 20%;
+    }
 }

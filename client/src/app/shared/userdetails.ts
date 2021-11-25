@@ -10,4 +10,6 @@ export class UserDetails{
     city: string;
     state: string;
     shopname: string;
+    latitude: number;
+    longitude: number;
 }

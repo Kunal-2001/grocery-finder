@@ -8,6 +8,9 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { MapsModule } from '@syncfusion/ej2-angular-maps';
+import { LegendService, MarkerService, MapsTooltipService, DataLabelService, BubbleService, NavigationLineService, SelectionService, AnnotationsService, ZoomService } from '@syncfusion/ej2-angular-maps';
+
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -44,11 +47,14 @@ import { baseURL } from './shared/baseurl';
     FormsModule,
     MatInputModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    MapsModule,
   ],
   providers: [
     FeedbackService,
-    {provide: 'baseURL', useValue: baseURL}
+    {provide: 'baseURL', useValue: baseURL},
+    ZoomService,
+    LegendService, MarkerService, MapsTooltipService, DataLabelService, BubbleService, NavigationLineService, SelectionService, AnnotationsService
   ],
   bootstrap: [AppComponent]
 })

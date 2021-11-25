@@ -5,7 +5,6 @@ import { baseURL } from '../shared/baseurl';
 
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
@@ -76,6 +75,7 @@ export class IndexComponent implements OnInit {
   user: UserDetails;
   errMess: string;
   show_more_form = false;
+  form_title = "Register As A Customer";
   
   constructor(private fb: FormBuilder, @Inject('baseURL') private baseURL) {
     this.createLoginForm();
@@ -113,6 +113,8 @@ export class IndexComponent implements OnInit {
       city: [''],
       state: [''],
       shopname: [''],
+      latitude: [0, [Validators.required]],
+      longitude: [0, [Validators.required]]
       // address: ['', [Validators.required]],
       // landmark: ['', [Validators.required]],
       // city: ['', [Validators.required]],
@@ -125,6 +127,10 @@ export class IndexComponent implements OnInit {
     this.onregisterValueChanged();
   }
 
+  cross() {
+    this.loginFormDirective.resetForm();
+    this.registerFormDirective.resetForm();
+  }
 
   loginSubmit() {
     this.user = this.loginForm.value;
@@ -194,6 +200,12 @@ export class IndexComponent implements OnInit {
   }
 
   toggleformview(){
-    this.show_more_form = !this.show_more_form
+    this.show_more_form = !this.show_more_form;
+    if (!this.show_more_form){
+        this.form_title = "Register As A Customer";
+    }
+    else{
+        this.form_title = "Register As A Seller";
+    }
   }
 }
