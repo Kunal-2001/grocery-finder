@@ -8,6 +8,9 @@ const {
   loginCustomer,
 } = require("../controllers");
 const Products = require("../models/products");
+const ShopAdmin = require("../models/shopAdmin");
+const { db } = require("../config/dbConfig");
+const { extractClientUsefulInfo } = require("../helper");
 
 router.post("/register", async (request, response) => {
   let { isShopAdmin } = request.body;
@@ -30,6 +33,34 @@ router.post("/login", async (request, response) => {
     }
   } catch (err) {
     response.status(500).json({ error: err.message });
+  }
+});
+
+router.post("/findNearLocation", async (req, res) => {
+  try {
+    const { latitude, longitude, maxDistance } = req.body;
+
+    ShopAdmin.find(
+      {
+        location: {
+          $near: {
+            $geometry: { type: "Point", coordinates: [longitude, latitude] },
+            $maxDistance: maxDistance,
+          },
+        },
+      },
+      (err, result) => {
+        if (err) {
+          console.log(err);
+        } else {
+          let topNearestLocations = result.slice(0, Math.min(3, result.length));
+          let usefulClientData = extractClientUsefulInfo(topNearestLocations);
+          res.status(200).json(usefulClientData);
+        }
+      }
+    );
+  } catch (err) {
+    res.status(500).json({ msg: "Something went wrong with the server" });
   }
 });
 

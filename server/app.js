@@ -5,7 +5,6 @@ const cors = require("cors");
 const indexRoute = require("./routes/index");
 
 // Config DB
-require("./config/dbConfig");
 
 const app = express();
 app.use(express.json());
