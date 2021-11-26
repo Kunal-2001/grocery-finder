@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const cors = require("cors");
 const indexRoute = require("./routes/index");
@@ -15,4 +17,4 @@ app.listen(PORT, () => console.log(`The server has started on port: ${PORT}`));
 
 // set up routes
 
-// app.use("/", indexRoute);
+app.use("/", indexRoute);
