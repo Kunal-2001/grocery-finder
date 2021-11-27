@@ -1,22 +1,18 @@
-import { Injectable } from '@angular/core';
- 
-import { Location } from '../shared/location';
-import { currentLoacation } from '../shared/current_location';
-import { propertyList } from '../shared/initial_location';
-import { Observable, of } from 'rxjs';
+import { Injectable } from "@angular/core";
+
+import { Location } from "../shared/location";
+import { getPosi } from "../shared/current_location";
+import { propertyList } from "../shared/initial_location";
+import { Observable, of } from "rxjs";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class FetchLocationService {
+  constructor() {}
 
-  constructor() { }
-
-  // getinitialLocation(): Observable<Location> {
-
-  // }
-
-  getcurrentLocation(): Observable<Location> {
-    return of(currentLoacation).pipe();
+  async getcurrentLocation() {
+    const z = await getPosi();
+    console.log(z);
   }
 }

@@ -1,15 +1,10 @@
-import { Location } from './location';
+import { Location } from "./location";
 
-var lng : number;
-var lat : number;
+var lng: number = 1;
+var lat: number = 2;
 
-navigator.geolocation.getCurrentPosition((position) => { 
-    globalThis.lng = position.coords.longitude,
-    globalThis.lat = position.coords.latitude
-});
-
-export const currentLoacation: Location = {
-    fulladdress : "Current Location",
-    longitude : lng,
-    latitude : lat
+export function getPosi() {
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
 }
