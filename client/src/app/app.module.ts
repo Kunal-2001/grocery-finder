@@ -10,7 +10,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { MapsModule } from '@syncfusion/ej2-angular-maps';
 import { LegendService, MarkerService, MapsTooltipService, DataLabelService, BubbleService, NavigationLineService, SelectionService, AnnotationsService, ZoomService } from '@syncfusion/ej2-angular-maps';
-
+import { CommonModule } from '@angular/common';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -25,6 +27,10 @@ import { IndexComponent } from './index/index.component';
 import { MainHeaderComponent } from './main-header/main-header.component';
 
 import { baseURL } from './shared/baseurl';
+import { AutocompleteComponent } from './autocomplete/autocomplete.component';
+import { MyMapComponent } from './my-map/my-map.component';
+import { ItemsearchComponent } from './itemsearch/itemsearch.component';
+import { SearchresultComponent } from './searchresult/searchresult.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +42,11 @@ import { baseURL } from './shared/baseurl';
     HomeComponent,
     ContactusComponent,
     IndexComponent,
-    MainHeaderComponent
+    MainHeaderComponent,
+    AutocompleteComponent,
+    MyMapComponent,
+    ItemsearchComponent,
+    SearchresultComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +59,9 @@ import { baseURL } from './shared/baseurl';
     BrowserAnimationsModule,
     HttpClientModule,
     MapsModule,
+    CommonModule,
+    MatAutocompleteModule,
+    MatTooltipModule,
   ],
   providers: [
     FeedbackService,

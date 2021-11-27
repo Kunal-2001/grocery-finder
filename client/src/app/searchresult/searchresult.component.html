@@ -1,0 +1,40 @@
+<div class="search-results">
+    <!-- <div fxFlex *ngIf="items">
+        <mat-grid-list cols="1" rowHeight="100px">
+            <mat-grid-tile *ngFor="let item of items" appHighlight>
+                <mat-grid-tile-header>
+                    <h1>{{item.name | uppercase}}</h1>
+                </mat-grid-tile-header>
+                <img height="200px" src="{{ baseURL + dish.image }}" alt={{dish.name}}>
+                <mat-grid-tile-footer>
+                <h1> {{item.shopname | uppercase}} </h1>
+                </mat-grid-tile-footer>
+            </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+      <div fxFlex *ngIf="!items">
+        <h4>Search Results Will Appear Here !!</h4>
+    </div> -->
+    <div fxFlex *ngIf="items">
+        <div *ngFor="let item of items" class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="media">
+                      <div class="media-left">
+                        <a href="#">
+                          <img class="media-object" src="#" alt="...">
+                        </a>
+                      </div>
+                      <div class="media-body">
+                        <h4>{{ item.name }} (Listed By {{item.shopname}})</h4>
+                        <h4>In Stock :- {{item.stock}}</h4>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div fxFlex *ngIf="!items">
+        <h4>Search Results Will Appear Here !!</h4>
+    </div>
+</div>

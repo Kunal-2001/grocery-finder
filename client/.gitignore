@@ -3,6 +3,9 @@
 /tmp
 /out-tsc
 
+#API Key
+src/environments/environment.prod.ts
+
 .angular
 
 # dependencies

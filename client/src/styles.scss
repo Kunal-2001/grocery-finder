@@ -1,31 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ruda:wght@700&display=swap');
 
 $primary_1: #FF7300;
 $primary_2: #DFDFDF;
 $primary_3: #afadad;
 $primary_4: #939393;
 
+html {
+    font-family: 'Ruda', sans-serif;
+}
+
 .LEFT {
     background-color: $primary_1;
-    font-family: 'Lobster', cursive;
     color: $primary_2;
     height: 100vh;
 }
 
 .RIGHT {
     background-color: $primary_2;
-    font-family: 'Lobster', cursive;
     height: 100vh;
     margin-top: auto;
     .container .row {
         margin: 20px 0 0 0;
     }
-}
-
-.modal-title {
-    font-family: 'Lobster', cursive;
 }
 
 .login_modal {
@@ -111,10 +109,6 @@ $primary_4: #939393;
 // .mat-form-field-infix {
 //     background-color: $primary_4;
 // }
-
-.active {
-    background-color: $primary_1;
-}
 
 .navbar-brand {
     img {
