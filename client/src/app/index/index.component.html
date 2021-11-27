@@ -1,0 +1,149 @@
+<app-main-header></app-main-header>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-sm-6 LEFT text-center d-flex align-items-center">
+            <div class="container">
+            <h3>Left Index Works</h3>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 RIGHT text-center d-flex align-items-center">
+            <div class="container">
+                <h3>Right Index Works</h3>
+            </div>
+        </div> 
+    </div>
+</div>
+
+<div id="loginModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg" role="content">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Login</h4>
+                <a type="button" class="close" data-dismiss="modal" (click)="cross()">
+                    &times;
+                </a>
+            </div>
+            <div class="modal-body d-flex justify-content-center login_modal">
+                <svg viewBox="-50 115 200 200">
+                    <path fill="#FF7300" d="M52.6,-55.3C62.9,-54.1,62.2,-32.5,63.7,-12.9C65.2,6.7,68.8,24.3,61.2,33.2C53.5,42.2,34.6,42.5,21,39.7C7.4,36.8,-0.8,30.8,-13,29.2C-25.3,27.6,-41.5,30.5,-48.1,24.9C-54.6,19.4,-51.6,5.4,-51.1,-11C-50.5,-27.4,-52.5,-46.2,-44.4,-47.7C-36.3,-49.2,-18.2,-33.5,1.5,-35.3C21.2,-37.1,42.4,-56.5,52.6,-55.3Z" transform="translate(100 100)" />
+                </svg>
+                <svg viewBox="60 20 200 200">
+                    <path fill="#FF7300" d="M21.5,-19.5C36.6,-13,63.5,-14.5,75.5,-4.7C87.4,5,84.4,26,70.5,31.7C56.5,37.4,31.5,27.8,12.4,35.2C-6.7,42.7,-20.1,67.2,-27,67.6C-33.9,67.9,-34.3,44,-38.8,26.9C-43.3,9.9,-51.8,-0.4,-53,-12.1C-54.1,-23.7,-48,-36.9,-38,-44.3C-28,-51.7,-14,-53.3,-5.4,-46.9C3.2,-40.5,6.5,-26,21.5,-19.5Z" transform="translate(100 100)" />
+                </svg>
+                <form novalidate [formGroup]="loginForm" #lform="ngForm" (ngSubmit)="loginSubmit()">
+                    <p> 
+                        <mat-form-field class="input_fields">
+                            <input matInput formControlName="mobnum" placeholder="Mobile Number" type="tel" pattern="[0-9]*" required>
+                            <mat-error *ngIf="loginformErrors.mobnum">{{loginformErrors.mobnum}}</mat-error>
+                        </mat-form-field>
+                    </p>
+                    <p> 
+                        <mat-form-field class="input_fields">
+                            <input matInput formControlName="password" placeholder="Password" type="password" required>
+                            <mat-error *ngIf="loginformErrors.password">{{loginformErrors.password}}</mat-error>
+                        </mat-form-field>
+                    </p>
+                    <p class="form_button">
+                        <button type="submit" mat-button class="btn" (click)="lform.ngSubmit.emit()" [disabled]="!lform.form.valid">Log In</button>
+                    </p>
+                  </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="registerModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-lg" style="max-width: 80%;" role="content">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">{{form_title}}</h4>
+                <a type="button" class="close" data-dismiss="modal" (click)="cross()">
+                    &times;
+                </a>
+            </div>
+            <div class="modal-body d-flex justify-content-center register_modal">
+                <!-- <p>{{ registerForm.value | json }} {{ registerForm.status | json }}</p> -->
+                <svg viewBox="60 -145 480 480">
+                    <path fill="#ff7300" d="M434,282.5Q416,325,397,369Q378,413,332,428Q286,443,239.5,444.5Q193,446,153.5,422.5Q114,399,75,368.5Q36,338,18.5,289Q1,240,27,195Q53,150,76,107Q99,64,146.5,50.5Q194,37,243.5,23.5Q293,10,334.5,40Q376,70,416,103Q456,136,454,188Q452,240,434,282.5Z" />
+                </svg>
+                <svg viewBox="-950 0 1080 1080">
+                    <path fill="#ff7300" d="M460,275.5Q458,311,445.5,345.5Q433,380,406.5,406.5Q380,433,344,441Q308,449,274,453Q240,457,203.5,461Q167,465,136,445.5Q105,426,81,399.5Q57,373,45.5,340Q34,307,23,273.5Q12,240,20,205.5Q28,171,40.5,137.5Q53,104,77.5,77Q102,50,135.5,36Q169,22,204.5,14.5Q240,7,273.5,21Q307,35,339.5,46.5Q372,58,399.5,81Q427,104,441,137Q455,170,458.5,205Q462,240,460,275.5Z" />
+                </svg>
+                <form novalidate [formGroup]="registerForm" #rform="ngForm" (ngSubmit)="registerSubmit()">
+                    <div class="container">
+                        <div class="row align-items-start">
+                            <div class="col">
+                                <p>
+                                    <mat-form-field class="input_fields">
+                                      <input matInput formControlName="fullname" placeholder="Name" type="text" required>
+                                      <mat-error *ngIf="registerformErrors.fullname">{{registerformErrors.fullname}}</mat-error>
+                                    </mat-form-field>
+                                </p>
+                                <p> 
+                                    <mat-form-field class="input_fields">
+                                      <input matInput formControlName="mobnum" placeholder="Mobile Number" type="tel" pattern="[0-9]*" required>
+                                      <mat-error *ngIf="registerformErrors.mobnum">{{registerformErrors.mobnum}}</mat-error>
+                                    </mat-form-field>
+                                </p>
+                                <p> 
+                                    <mat-form-field class="input_fields">
+                                      <input matInput formControlName="email" placeholder="Email" type="email" email required>
+                                      <mat-error *ngIf="registerformErrors.email">{{registerformErrors.email}}</mat-error>
+                                    </mat-form-field>
+                                </p>
+                                <p> 
+                                      <mat-form-field class="input_fields">
+                                          <input matInput formControlName="password" placeholder="Password" type="password" required>
+                                          <mat-error *ngIf="registerformErrors.password">{{registerformErrors.password}}</mat-error>
+                                      </mat-form-field>
+                                </p>
+                                    <div class="input_fields">
+                                        <input formControlName="shopadmin" type="checkbox" name="shopadmin" (click)="toggleformview()">
+                                        <label for="shopadmin">Register As A Seller</label>
+                                    </div>
+                            </div>
+                            <div class="col">
+                                <div [hidden] = "show_more_form">
+                                    <img class="text-center d-flex justify-content-center register_img" src="assets/images/Group-9.png">
+                                </div>
+                                <div [hidden] = "!show_more_form">
+                                    <p>
+                                        <mat-form-field class="input_fields">
+                                          <input matInput formControlName="shopname" placeholder="Shop Name" type="text">
+                                          <mat-error *ngIf="registerformErrors.shopname">{{registerformErrors.shopname}}</mat-error>
+                                        </mat-form-field>
+                                    </p>
+                                    <p>
+                                        <mat-form-field class="input_fields">
+                                          <input matInput formControlName="address" placeholder="Full Address" type="text">
+                                          <mat-error *ngIf="registerformErrors.address">{{registerformErrors.address}}</mat-error>
+                                        </mat-form-field>
+                                    </p>
+                                    <p>
+                                        <mat-form-field class="input_fields">
+                                          <input matInput formControlName="landmark" placeholder="Landmark" type="text">
+                                          <mat-error *ngIf="registerformErrors.landmark">{{registerformErrors.landmark}}</mat-error>
+                                        </mat-form-field>
+                                    </p>
+                                    <p>
+                                        <mat-form-field class="input_fields half-width">
+                                          <input matInput formControlName="city" placeholder="City" type="city">
+                                          <mat-error *ngIf="registerformErrors.city">{{registerformErrors.city}}</mat-error>
+                                        </mat-form-field> 
+                                        <mat-form-field class="input_fields half-width">
+                                          <input matInput formControlName="state" placeholder="State" type="text">
+                                          <mat-error *ngIf="registerformErrors.state">{{registerformErrors.state}}</mat-error>
+                                        </mat-form-field>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="form_button">
+                        <button type="submit" mat-button class="btn" (click)="rform.ngSubmit.emit()" style="width: 100%;" [disabled]="!rform.form.valid">Register</button>
+                    </p>
+                  </form>
+            </div>
+        </div>
+    </div>
+</div>

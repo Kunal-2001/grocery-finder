@@ -6,10 +6,13 @@ import { ProfileComponent } from './profile/profile.component';
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { ContactusComponent } from './contactus/contactus.component';
-
+import { IndexComponent } from './index/index.component';
+import { AuthGuard } from './services/auth.guard';
+ 
 const routes: Routes = [
-  { path: 'home',  component: HomeComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'index',  component: IndexComponent },
+  { path: '', redirectTo: '/index', pathMatch: 'full' },
+  { path: 'home',  component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'feedback',  component: FeedbackComponent },
   { path: 'profile',  component: ProfileComponent },
   { path: 'about',  component: AboutComponent },

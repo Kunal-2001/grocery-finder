@@ -7,7 +7,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { HttpClientModule } from '@angular/common/http';
+import { MapsModule } from '@syncfusion/ej2-angular-maps';
+import { LegendService, MarkerService, MapsTooltipService, DataLabelService, BubbleService, NavigationLineService, SelectionService, AnnotationsService, ZoomService } from '@syncfusion/ej2-angular-maps';
+import { CommonModule } from '@angular/common';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -18,6 +23,14 @@ import { HomeComponent } from './home/home.component';
 
 import { FeedbackService } from './services/feedback.service';
 import { ContactusComponent } from './contactus/contactus.component';
+import { IndexComponent } from './index/index.component';
+import { MainHeaderComponent } from './main-header/main-header.component';
+
+import { baseURL } from './shared/baseurl';
+import { AutocompleteComponent } from './autocomplete/autocomplete.component';
+import { MyMapComponent } from './my-map/my-map.component';
+import { ItemsearchComponent } from './itemsearch/itemsearch.component';
+import { SearchresultComponent } from './searchresult/searchresult.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +40,13 @@ import { ContactusComponent } from './contactus/contactus.component';
     FeedbackComponent,
     AboutComponent,
     HomeComponent,
-    ContactusComponent
+    ContactusComponent,
+    IndexComponent,
+    MainHeaderComponent,
+    AutocompleteComponent,
+    MyMapComponent,
+    ItemsearchComponent,
+    SearchresultComponent
   ],
   imports: [
     BrowserModule,
@@ -37,10 +56,18 @@ import { ContactusComponent } from './contactus/contactus.component';
     MatFormFieldModule,
     FormsModule,
     MatInputModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule,
+    MapsModule,
+    CommonModule,
+    MatAutocompleteModule,
+    MatTooltipModule,
   ],
   providers: [
-    FeedbackService
+    FeedbackService,
+    {provide: 'baseURL', useValue: baseURL},
+    ZoomService,
+    LegendService, MarkerService, MapsTooltipService, DataLabelService, BubbleService, NavigationLineService, SelectionService, AnnotationsService
   ],
   bootstrap: [AppComponent]
 })
