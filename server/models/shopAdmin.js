@@ -2,18 +2,31 @@ var mongoose = require("mongoose");
 
 const shopAdminSchema = new mongoose.Schema({
   mobile: Number,
+  username: "String",
   email: "String",
   password: "String",
   shopName: "String",
   city: "String",
   state: "String",
+  country: "String",
   address: "String",
-  latitude: {
-    type: mongoose.Types.Decimal128,
+  location: {
+    type: {
+      type: String,
+      enum: ["Point"],
+      required: true,
+    },
+    coordinates: {
+      type: [Number],
+      required: true,
+    },
   },
-  longitude: {
-    type: mongoose.Types.Decimal128,
-  },
+  products: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Product",
+    },
+  ],
   lastUpdated: {
     type: Date,
   },
