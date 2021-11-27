@@ -3,10 +3,16 @@
 /tmp
 /out-tsc
 
+#API Key
+src/environments/environment.prod.ts
+
 .angular
 
 # dependencies
 /node_modules
+
+#local server for testing
+/json-server
 
 # IDEs and editors
 /.idea

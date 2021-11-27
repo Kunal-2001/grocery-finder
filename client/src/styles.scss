@@ -1,35 +1,71 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ruda:wght@700&display=swap');
 
 $primary_1: #FF7300;
 $primary_2: #DFDFDF;
 $primary_3: #afadad;
 $primary_4: #939393;
 
+html {
+    font-family: 'Ruda', sans-serif;
+}
+
 .LEFT {
     background-color: $primary_1;
-    font-family: 'Lobster', cursive;
     color: $primary_2;
     height: 100vh;
 }
 
 .RIGHT {
     background-color: $primary_2;
-    font-family: 'Lobster', cursive;
     height: 100vh;
     margin-top: auto;
     .container .row {
         margin: 20px 0 0 0;
     }
 }
+
+.login_modal {
+    padding: 0;
+    overflow: hidden;
+    svg {
+        position:absolute;
+    }
+    form {
+        width: 50%;
+        margin: 50px;
+        z-index: 1;
+    }
+}
+
+.register_modal {
+    padding: 0;
+    overflow: hidden;
+    svg {
+        position:absolute;
+    }
+    form {
+        width: 100%;
+        margin: 50px;
+        z-index: 1;
+    }
+}
+
+.modal-header {
+    background-color: $primary_2;
+}
   
 .input_fields {
-    width: 80%
+    width: 100%
 }
 
 .form-size {
     width: 100%
+}
+
+.half-width {
+    width: 48%;
 }
 
 .header_bt{
@@ -62,6 +98,20 @@ $primary_4: #939393;
     }
 }
 
+.form_button {
+    float: right;
+    button {
+        background-color: $primary_1;
+        color: white;
+    }
+}
+
 // .mat-form-field-infix {
 //     background-color: $primary_4;
 // }
+
+.navbar-brand {
+    img {
+        width: 20%;
+    }
+}
