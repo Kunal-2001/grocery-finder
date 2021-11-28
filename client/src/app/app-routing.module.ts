@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { IndexComponent } from './index/index.component';
 import { AuthGuard } from './services/auth.guard';
+import { SearchresultComponent } from './searchresult/searchresult.component';
  
 const routes: Routes = [
   { path: 'index',  component: IndexComponent },
@@ -16,7 +17,7 @@ const routes: Routes = [
   { path: 'feedback',  component: FeedbackComponent },
   { path: 'profile',  component: ProfileComponent },
   { path: 'about',  component: AboutComponent },
-  { path: 'contactus',  component: ContactusComponent }
+  { path: 'contactus',  component: ContactusComponent },
 ];
 
 @NgModule({

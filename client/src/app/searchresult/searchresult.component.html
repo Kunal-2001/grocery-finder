@@ -1,40 +1,33 @@
-<div class="search-results">
-    <!-- <div fxFlex *ngIf="items">
-        <mat-grid-list cols="1" rowHeight="100px">
-            <mat-grid-tile *ngFor="let item of items" appHighlight>
-                <mat-grid-tile-header>
-                    <h1>{{item.name | uppercase}}</h1>
-                </mat-grid-tile-header>
-                <img height="200px" src="{{ baseURL + dish.image }}" alt={{dish.name}}>
-                <mat-grid-tile-footer>
-                <h1> {{item.shopname | uppercase}} </h1>
-                </mat-grid-tile-footer>
-            </mat-grid-tile>
-        </mat-grid-list>
-      </div>
-      <div fxFlex *ngIf="!items">
-        <h4>Search Results Will Appear Here !!</h4>
-    </div> -->
+<div class="search-results" id="style-1">
+  <div class="col-lg-12">
     <div fxFlex *ngIf="items">
-        <div *ngFor="let item of items" class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="media">
-                      <div class="media-left">
-                        <a href="#">
-                          <img class="media-object" src="#" alt="...">
-                        </a>
-                      </div>
-                      <div class="media-body">
-                        <h4>{{ item.name }} (Listed By {{item.shopname}})</h4>
-                        <h4>In Stock :- {{item.stock}}</h4>
-                      </div>
-                    </div>
+      <!-- List group-->
+      <ul class="list-group shadow">
+        <div *ngFor="let item of items">
+          <!-- list group item-->
+          <li class="list-group-item mb-2">
+            <!-- Custom content-->
+            <div class="media align-items-lg-center flex-column flex-lg-row p-3">
+              <div class="media-body order-2 order-lg-1">
+                <h5 class="mt-0 font-weight-bold mb-2">{{item.name}}</h5>
+                <p class="font-italic text-muted mb-0 small"> Sold By :- {{item.shopname}}</p>
+                <p class="font-italic text-muted mb-0 small"> In Stock :- {{item.stock}}</p>
+                <div class="align-items-center justify-content-between mt-1">
+                  <h6 class="font-weight-bold my-2">Only {{item.price}} Rs.</h6>
                 </div>
+                <p class="item_button">
+                  <button type="submit" (click)="alertlocation(item.id)" mat-button class="btn" style="width: 100%;">Get Location</button>
+                </p>
+              </div><img src="#" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
             </div>
+            <!-- End -->
+          </li>
         </div>
-    </div>
+        <!-- End -->
+      </ul>
+    </div>    
     <div fxFlex *ngIf="!items">
-        <h4>Search Results Will Appear Here !!</h4>
-    </div>
+      <h4>Search Results Will Appear Here !!</h4>
+    </div>    
+  </div>
 </div>

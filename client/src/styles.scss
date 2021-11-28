@@ -7,19 +7,17 @@ $primary_2: #DFDFDF;
 $primary_3: #afadad;
 $primary_4: #939393;
 
-html {
-    font-family: 'Ruda', sans-serif;
-}
-
 .LEFT {
     background-color: $primary_1;
     color: $primary_2;
     height: 100vh;
+    font-family: 'Ruda', sans-serif;
 }
 
 .RIGHT {
     background-color: $primary_2;
     height: 100vh;
+    font-family: 'Ruda', sans-serif;
     margin-top: auto;
     .container .row {
         margin: 20px 0 0 0;
@@ -27,6 +25,7 @@ html {
 }
 
 .login_modal {
+    font-family: 'Ruda', sans-serif;
     padding: 0;
     overflow: hidden;
     svg {
@@ -40,6 +39,7 @@ html {
 }
 
 .register_modal {
+    font-family: 'Ruda', sans-serif;
     padding: 0;
     overflow: hidden;
     svg {
@@ -54,6 +54,7 @@ html {
 
 .modal-header {
     background-color: $primary_2;
+    font-family: 'Ruda', sans-serif;
 }
   
 .input_fields {
@@ -114,4 +115,8 @@ html {
     img {
         width: 20%;
     }
+}
+
+.mat-input-element {
+    font-family: 'Ruda', sans-serif;
 }

@@ -10,6 +10,7 @@
 nav {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    font-family: 'Ruda', sans-serif;
 }
 
 .navbar-brand {
@@ -24,7 +25,6 @@ button{
     border-radius: 15px;
     font-size: 15px;
     font-weight: 500;
-    font-family: 'Ruda', sans-serif;
     color: #939393;
     background: white;
     box-shadow: 1px 8px 12px #c7c4c4;
@@ -34,7 +34,6 @@ button:hover{
     color: #ff7300;
     box-shadow:  2px 12px 12px #c7c4c4;
 }
-
 
 button :active{
     color: #ff7300;
