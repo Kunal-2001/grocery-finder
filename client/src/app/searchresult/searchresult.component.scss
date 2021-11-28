@@ -1,5 +1,49 @@
 .search-results {
-    height: 400px;
+    height: 420px;
     width: 600px;
     overflow-y: scroll;
+}
+
+#style-1::-webkit-scrollbar-track
+{
+	border-radius: 10px;
+	//background-color: #F5F5F5;
+}
+
+#style-1::-webkit-scrollbar
+{
+	width: 10px;
+	//background-color: #F5F5F5;
+}
+
+#style-1::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-color: #ff7300;
+}
+
+li {
+    height: max-content;
+}
+
+.item_button {
+    align-items: center;
+}
+
+button{
+    width: 130px;
+    height: 40px;
+    border: 0;
+    border-radius: 15px;
+    font-size: 15px;
+    font-weight: 500;
+    color: white;
+    background: #ff7300;
+    box-shadow: 1px 8px 12px #c7c4c4;
+               
+}
+button:hover{
+    background : white;
+    color: #ff7300;
+    box-shadow:  2px 12px 12px #c7c4c4;
 }

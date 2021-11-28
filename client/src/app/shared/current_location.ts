@@ -1,5 +1,3 @@
-import { Location } from "./location";
-
 var lng: number = 1;
 var lat: number = 2;
 

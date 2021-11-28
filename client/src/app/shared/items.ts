@@ -7,9 +7,10 @@ export const ITEMS : ItemDetails[] = [
         image : '',
         category : 'Category 1',
         shopname : 'Shop Alpha',
-        latitude : 12,
-        longitude : 12,
-        stock : 5
+        latitude : 28.632448544659976,
+        longitude : 77.19884966824863,
+        stock : 5,
+        price : 10
     },
     {        
         id : 1,
@@ -17,18 +18,21 @@ export const ITEMS : ItemDetails[] = [
         image : '',
         category : 'Category 2',
         shopname : 'Shop Bravo',
-        latitude : 12,
-        longitude : 12,
-        stock : 51},
+        latitude : 28.64877468951386,
+        longitude : 77.17489738144468,
+        stock : 51,
+        price : 10
+    },
     {
         id : 2,
         name : 'Item C',
         image : '',
         category : 'Category 2',
         shopname : 'Shop Charlie',
-        latitude : 12,
-        longitude : 12,
-        stock : 15
+        latitude : 28.624208059909613,
+        longitude : 77.17476957101283,
+        stock : 15,
+        price : 10
     },
     {
         id : 3,
@@ -36,9 +40,10 @@ export const ITEMS : ItemDetails[] = [
         image : '',
         category : 'Category 3',
         shopname : 'Shop Deck',
-        latitude : 12,
-        longitude : 12,
-        stock : 54
+        latitude : 28.63239757550273,
+        longitude : 77.22423220813522,
+        stock : 54,
+        price : 10
     },
     {
         id : 4,
@@ -46,8 +51,9 @@ export const ITEMS : ItemDetails[] = [
         image : '',
         category : 'Category 5',
         shopname : 'Shop Engalo',
-        latitude : 12,
-        longitude : 12,
-        stock : 12
+        latitude : 28.65314896534288,
+        longitude : 77.21860854913422,
+        stock : 12,
+        price : 10
     }
 ]

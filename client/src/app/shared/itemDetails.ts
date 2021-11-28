@@ -7,4 +7,5 @@ export class ItemDetails {
     latitude : number;
     longitude : number;
     stock : number;
+    price : number;
 }

@@ -29,31 +29,11 @@ export class MyMapComponent implements OnInit, AfterViewInit {
 
   constructor(private fetchlocationService: FetchLocationService) {}
 
-  ngOnInit() {}
-
-  changevalue(value) {
-    const newstate = { lng: value.data.lon, lat: value.data.lat, zoom: 15 };
-    // this.lefletMap.removeLayer
-    // this.lefletMap = map(this.mapContainer.nativeElement).setView([newstate.lat, newstate.lng], newstate.zoom);
-    this.marker0 = L.marker([newstate.lat, newstate.lng]).addTo(this.lefletMap);
-  }
-
-  ngAfterViewInit() {
-    this.fetchlocationService.getcurrentLocation();
-    // .subscribe((locat) => (this.current_location = locat));
-    // console.log(this.current_location);
-
-    //const initialState = { lng: position.coords.longitude, lat: position.coords.latitude, zoom: 15 };
-    this.lefletMap = L.map(this.mapContainer.nativeElement).setView(
-      [this.current_location.longitude, this.current_location.latitude],
-      15
-    );
-
+  ngOnInit() {
+    this.lefletMap = L.map('map', { center: [32.203505, 30.753307], zoom: 1 });
     const isRetina = L.Browser.retina;
-    const baseUrl =
-      "https://maps.geoapify.com/v1/tile/osm-bright/{z}/{x}/{y}.png?apiKey={apiKey}";
-    const retinaUrl =
-      "https://maps.geoapify.com/v1/tile/osm-bright/{z}/{x}/{y}@2x.png?apiKey={apiKey}";
+    const baseUrl = "https://maps.geoapify.com/v1/tile/osm-bright/{z}/{x}/{y}.png?apiKey={apiKey}";
+    const retinaUrl = "https://maps.geoapify.com/v1/tile/osm-bright/{z}/{x}/{y}@2x.png?apiKey={apiKey}";
 
     const iconRetinaUrl = "assets/marker/marker-icon-2x.png";
     const iconUrl = "assets/marker/marker-icon.png";
@@ -65,7 +45,7 @@ export class MyMapComponent implements OnInit, AfterViewInit {
       iconAnchor: [12, 41],
       popupAnchor: [1, -34],
       tooltipAnchor: [16, -28],
-      shadowSize: [31, 31],
+      shadowSize: [35, 35],
     });
     L.Marker.prototype.options.icon = iconDefault;
     L.tileLayer(isRetina ? retinaUrl : baseUrl, {
@@ -75,46 +55,32 @@ export class MyMapComponent implements OnInit, AfterViewInit {
       maxZoom: 20,
       id: "osm-bright",
     } as any).addTo(this.lefletMap);
-    L.marker([this.current_location.longitude, this.current_location.latitude])
+  }
+
+  ngAfterViewInit() {
+    this.fetchlocationService.getcurrentLocation().then((data) => {
+      setTimeout(() => {
+        this.changeinitialvalue(data); 
+      }, 2000);
+    });
+  }
+
+  
+  changeinitialvalue(value) {
+    //console.log(value);
+    this.lefletMap.flyTo([value.latitude, value.longitude], 15, { animate: true, duration: 8 });
+    this.marker0 = L.marker([value.latitude, value.longitude])
+      .addTo(this.lefletMap)
+      .bindPopup(value.fulladdress)
+      .openPopup();
+  }
+
+  changevalue(value) {
+    //console.log(value.data.lat);
+    this.lefletMap.flyTo([value.data.lat, value.data.lon], 15, { animate: true, duration: 8 });
+    L.marker([value.data.lon, value.data.lat]).addTo(this.lefletMap)
       .addTo(this.lefletMap)
       .bindPopup(this.current_location.fulladdress)
       .openPopup();
-
-    //this.leafletMap();
-    //this.marker0 = L.marker([position.coords.latitude, position.coords.longitude]).addTo(this.lefletMap);
   }
-  // leafletMap(): void {
-  //   console.log(this.propertyList)
-  //   for (const property of this.propertyList) {
-  //     L.marker([property.lat, property.long]).addTo(this.lefletMap)
-  //       .bindPopup(property.city)
-  //       .openPopup();
-  //   }
-  // }
 }
-
-// propertyList = [
-//   {
-//       "city": "Cambridge",
-//       "state": "MA",
-//       "long": -71.10858,
-//       "lat": 42.35963
-//   },
-//   {
-//       "city": "Cambridge",
-//       "state": "MA",
-//       "long": -71.10869,
-//       "lat": 42.359103
-//   },
-//   {
-//       "city": "Boston",
-//       "state": "MA",
-//       "long": -71.110061,
-//       "lat": 42.360686
-//   },
-//   {
-//       "city": "Cambridge",
-//       "long": -71.110448,
-//       "lat": 42.360642
-//   }
-// ];
