@@ -24,16 +24,18 @@ export class MyMapComponent implements OnInit, AfterViewInit {
   @ViewChild("map")
   private mapContainer: ElementRef<HTMLElement>;
 
-  lefletMap: L.Map;
+  public lefletMap;
   marker0: any;
 
   constructor(private fetchlocationService: FetchLocationService) {}
 
   ngOnInit() {
-    this.lefletMap = L.map('map', { center: [32.203505, 30.753307], zoom: 1 });
+    this.lefletMap = L.map("map", { center: [32.203505, 30.753307], zoom: 1 });
     const isRetina = L.Browser.retina;
-    const baseUrl = "https://maps.geoapify.com/v1/tile/osm-bright/{z}/{x}/{y}.png?apiKey={apiKey}";
-    const retinaUrl = "https://maps.geoapify.com/v1/tile/osm-bright/{z}/{x}/{y}@2x.png?apiKey={apiKey}";
+    const baseUrl =
+      "https://maps.geoapify.com/v1/tile/osm-bright/{z}/{x}/{y}.png?apiKey={apiKey}";
+    const retinaUrl =
+      "https://maps.geoapify.com/v1/tile/osm-bright/{z}/{x}/{y}@2x.png?apiKey={apiKey}";
 
     const iconRetinaUrl = "assets/marker/marker-icon-2x.png";
     const iconUrl = "assets/marker/marker-icon.png";
@@ -60,15 +62,18 @@ export class MyMapComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.fetchlocationService.getcurrentLocation().then((data) => {
       setTimeout(() => {
-        this.changeinitialvalue(data); 
+        this.changeinitialvalue(data);
       }, 2000);
     });
   }
 
-  
   changeinitialvalue(value) {
-    //console.log(value);
-    this.lefletMap.flyTo([value.latitude, value.longitude], 15, { animate: true, duration: 8 });
+    console.log(this.lefletMap);
+
+    this.lefletMap.flyTo([value.latitude, value.longitude], 15, {
+      animate: true,
+      duration: 8,
+    });
     this.marker0 = L.marker([value.latitude, value.longitude])
       .addTo(this.lefletMap)
       .bindPopup(value.fulladdress)
@@ -76,11 +81,16 @@ export class MyMapComponent implements OnInit, AfterViewInit {
   }
 
   changevalue(value) {
-    //console.log(value.data.lat);
-    this.lefletMap.flyTo([value.data.lat, value.data.lon], 15, { animate: true, duration: 8 });
-    L.marker([value.data.lon, value.data.lat]).addTo(this.lefletMap)
+    console.log(value);
+
+    this.lefletMap.flyTo([value.data.lat, value.data.lon], 15, {
+      animate: true,
+      duration: 8,
+    });
+    L.marker([value.data.lon, value.data.lat])
       .addTo(this.lefletMap)
-      .bindPopup(this.current_location.fulladdress)
+      .addTo(this.lefletMap)
+      .bindPopup(value.fulladdress)
       .openPopup();
   }
 }

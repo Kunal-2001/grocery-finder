@@ -31,6 +31,7 @@ import { AutocompleteComponent } from './autocomplete/autocomplete.component';
 import { MyMapComponent } from './my-map/my-map.component';
 import { ItemsearchComponent } from './itemsearch/itemsearch.component';
 import { SearchresultComponent } from './searchresult/searchresult.component';
+import { ShopDashboardComponent } from './shop-dashboard/shop-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { SearchresultComponent } from './searchresult/searchresult.component';
     AutocompleteComponent,
     MyMapComponent,
     ItemsearchComponent,
-    SearchresultComponent
+    SearchresultComponent,
+    ShopDashboardComponent
   ],
   imports: [
     BrowserModule,
