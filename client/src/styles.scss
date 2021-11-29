@@ -7,11 +7,28 @@ $primary_2: #DFDFDF;
 $primary_3: #afadad;
 $primary_4: #939393;
 
+.navbar-toggler:not([disabled]):not(.disabled) {
+    width: auto;
+}
+
+// .btn:not([disabled]):not(.disabled) {
+//     margin-left: auto;
+//     margin-right: auto;
+// }
+
+
 .LEFT {
     background-color: $primary_1;
     color: $primary_2;
     height: 100vh;
     font-family: 'Ruda', sans-serif;
+}
+
+.LEFT_C {
+    @extend .LEFT;
+    .container {
+        margin-top: 85px;
+    }
 }
 
 .RIGHT {
@@ -21,6 +38,13 @@ $primary_4: #939393;
     margin-top: auto;
     .container .row {
         margin: 20px 0 0 0;
+    }
+}
+
+.RIGHT_C {
+    @extend .RIGHT;
+    .container {
+        margin-top: 85px;
     }
 }
 

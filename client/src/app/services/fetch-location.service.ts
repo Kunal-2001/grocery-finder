@@ -14,6 +14,8 @@ import { Observable, of } from "rxjs";
 import { ItemDetails } from "../shared/itemDetails";
 import { ItemsearchService } from "./itemsearch.service";
 
+import { environment } from "src/environments/environment.prod";
+
 @Injectable({
   providedIn: "root",
 })
@@ -38,5 +40,11 @@ export class FetchLocationService {
     }
     //console.log(data)
     return data;
+  }
+
+  getroute(initial, final):Observable<any>{
+    //alert(this.selectedItem.latitude + ' ' + this.selectedItem.longitude)
+    return this.http.get<any>(`https://api.geoapify.com/v1/routing?waypoints=${initial.latitude},${initial.longitude}|${final.latitude},${final.longitude}&mode=drive&apiKey=${environment.GeoAPIfy_KEY}`)
+      .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 }

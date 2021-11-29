@@ -4,7 +4,7 @@ import {
   ViewChild,
   ElementRef,
   NgZone,
-} from "@angular/core";
+} from "@angular/core"; 
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { PlaceSuggestion } from "../autocomplete/autocomplete.component";
 import { MyMapComponent } from "../my-map/my-map.component";

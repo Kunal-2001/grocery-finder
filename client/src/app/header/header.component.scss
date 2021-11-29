@@ -1,6 +1,6 @@
 .header_class {
     background-color: white;
-    z-index: 1;
+    z-index: 5;
     a {
         text-decoration: none;
         color: black;
@@ -11,6 +11,7 @@ nav {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     font-family: 'Ruda', sans-serif;
+    z-index: 5;
 }
 
 .navbar-brand {
@@ -37,5 +38,5 @@ button:hover{
 
 button :active{
     color: #ff7300;
-    box-shadow:  2px 12px 12px #c7c4c4;
+    //box-shadow:  2px 12px 12px #c7c4c4;
 }
