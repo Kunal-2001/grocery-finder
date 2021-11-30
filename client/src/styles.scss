@@ -24,11 +24,8 @@ $primary_4: #939393;
     font-family: 'Ruda', sans-serif;
 }
 
-.LEFT_C {
-    @extend .LEFT;
-    .container {
-        margin-top: 85px;
-    }
+.add_margin {
+    margin-top: 85px;
 }
 
 .RIGHT {
@@ -38,13 +35,6 @@ $primary_4: #939393;
     margin-top: auto;
     .container .row {
         margin: 20px 0 0 0;
-    }
-}
-
-.RIGHT_C {
-    @extend .RIGHT;
-    .container {
-        margin-top: 85px;
     }
 }
 
@@ -143,4 +133,12 @@ $primary_4: #939393;
 
 .mat-input-element {
     font-family: 'Ruda', sans-serif;
+}
+
+.popup {
+    font-family: 'Ruda', sans-serif;
+}
+
+.leaflet-popup-content {
+    width: max-content;
 }

@@ -20,8 +20,11 @@ export class SearchresultComponent implements OnInit {
   constructor(private map_component : MyMapComponent, private route: ActivatedRoute, private ItemSearchService : ItemsearchService, private fetchLocationService : FetchLocationService) { }
 
   ngOnInit(): void {
-    this.items = this.ItemSearchService.getItems();
-  } 
+    this.ItemSearchService.getItems()
+      .subscribe((data) => {
+        this.items = data;
+      });
+  }  
 
   showpath(id) : void {
     this.fetchLocationService.getitem(id)

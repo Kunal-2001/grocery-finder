@@ -2,8 +2,9 @@ import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from "@angula
 import * as L from "leaflet";
 import { icon } from "leaflet";
 
+
 import { FetchLocationService } from "../services/fetch-location.service";
-import { Location } from "../shared/location";
+import { current_location, change_value, map_dup, change_map, markers, empty_markers, add_marker, remove_last_marker, remove_geo, add_geo, geoLayers } from "../shared/current_location";
 
 import { environment } from "src/environments/environment.prod";
 
@@ -12,18 +13,15 @@ import { environment } from "src/environments/environment.prod";
   templateUrl: "./my-map.component.html",
   styleUrls: ["./my-map.component.scss"],
 })
+
 export class MyMapComponent implements OnInit, AfterViewInit {
   @ViewChild("map")
   private mapContainer: ElementRef<HTMLElement>;
 
-  public current_location;
-  public lefletMap;
-  public marker0: any;
-
   constructor(private fetchlocationService: FetchLocationService) {}
 
   ngOnInit() {
-    this.lefletMap = L.map("map", { center: [32.203505, 30.753307], zoom: 1 });
+    var lefletMap = L.map("map", { center: [32.203505, 30.753307], zoom: 1 });
     const isRetina = L.Browser.retina;
     const baseUrl =
       "https://maps.geoapify.com/v1/tile/osm-bright/{z}/{x}/{y}.png?apiKey={apiKey}";
@@ -31,12 +29,12 @@ export class MyMapComponent implements OnInit, AfterViewInit {
       "https://maps.geoapify.com/v1/tile/osm-bright/{z}/{x}/{y}@2x.png?apiKey={apiKey}";
 
     const iconRetinaUrl = "assets/marker/marker-icon-2x.png";
-    const iconUrl = "assets/marker/marker-5.png";
+    const iconUrl = "assets/marker/marker3.png";
     const shadowUrl = "assets/marker/marker-shadow.png";
     const iconDefault = icon({
       iconUrl,
       shadowUrl,
-      iconSize: [30, 45],
+      iconSize: [25, 38],
       iconAnchor: [12, 41],
       popupAnchor: [1, -34],
       tooltipAnchor: [16, -28],
@@ -49,7 +47,8 @@ export class MyMapComponent implements OnInit, AfterViewInit {
       apiKey: environment.GeoAPIfy_KEY,
       maxZoom: 20,
       id: "osm-bright",
-    } as any).addTo(this.lefletMap);
+    } as any).addTo(lefletMap);
+    change_map(lefletMap);
   }
 
   ngAfterViewInit() {
@@ -61,37 +60,89 @@ export class MyMapComponent implements OnInit, AfterViewInit {
   }
 
   changeinitialvalue(value) {
-    //console.log(value);
-    this.current_location = value;
-    this.lefletMap = this.lefletMap.flyTo([value.latitude, value.longitude], 15, { animate: true, duration: 8 });
-    this.marker0 = L.marker([value.latitude, value.longitude])
-      .addTo(this.lefletMap)
-      .bindPopup(value.fulladdress)
-      .openPopup();
-    console.log(this.current_location);
+    change_value(value);
+    var lefletMap = map_dup;
+    lefletMap = lefletMap.flyTo([value.latitude, value.longitude], 15, { animate: true, duration: 8 });
+    change_map(lefletMap);
+    add_marker(value);
   }
 
   changevalue(value) {
-    this.current_location = {
+    var lefletMap = map_dup;
+    if (markers.length > 1){
+      lefletMap.removeLayer(markers[1]);
+      remove_last_marker();
+      lefletMap.removeLayer(geoLayers[0]);
+      remove_geo();
+      change_map(lefletMap);
+    }
+    var curr_loc = {
       latitude : value.data.lat,
       longitude : value.data.lon,
       fulladdress : value.fullAddress
     }
-    console.log(this.current_location);
-    this.lefletMap.flyTo([value.data.lat, value.data.lon], 15, { animate: true, duration: 8 });
-    this.lefletMap.removeLayer(this.marker0);
-    this.marker0 = L.marker([value.data.lat, value.data.lon])
-      .addTo(this.lefletMap)
-      .bindPopup(value.fullAddress)
-      .openPopup();
-    //console.log(value)
+    change_value(curr_loc);
+    lefletMap = map_dup;
+    lefletMap.flyTo([value.data.lat, value.data.lon], 15, { animate: true, duration: 8 });
+    lefletMap.removeLayer(markers[0]);
+    change_map(lefletMap);
+    empty_markers();
+    add_marker(curr_loc);
   }
 
   showroute(value) : void{
-    console.log(this.current_location)
-    //alert(this.selectedItem.latitude + ' ' + this.selectedItem.longitude)
-    this.fetchlocationService.getroute(this.current_location, value).subscribe((data) => {
-      console.log(data)
+    var lefletMap = map_dup;
+    if (markers.length > 1){
+      lefletMap.removeLayer(markers[1]);
+      remove_last_marker();
+      lefletMap.removeLayer(geoLayers[0]);
+      remove_geo();
+      change_map(lefletMap);
+    }
+    this.fetchlocationService.getroute(current_location, value).subscribe((data) => {
+      add_marker(value);
+
+      //console.log(data);
+      var group = L.featureGroup(markers);
+      lefletMap.fitBounds(group.getBounds().pad(0.5));
+
+      add_geo(L.geoJSON(data, {
+        onEachFeature: function (feature, layer) {
+          console.log(feature)
+          layer.bindPopup(
+            '<div class = "popup m-0" style = "width : 155px">\
+              <div class="container">\
+                <div class="row align-items-start">\
+                  <div class="col-9 p-0 align-items-center">\
+                    <p>Addresss hereeeee</p>\
+                  </div>\
+                </div>\
+                <div class="row align-items-start">\
+                  <div class="col-9 p-0 align-items-center">\
+                    <h3>\<b>' + feature.properties.distance +' m</b>\</h3>\
+                  </div>\
+                  <div class="col-3 p-0">\
+                    <img src="assets/images/walk.png" style="height:34px;">\
+                  </div>\
+                </div>\
+                <div class="row align-items-start">\
+                  <div class="col-4 p-0">\
+                    <img src="assets/images/clock.png" style="height:34px;">\
+                  </div>\
+                  <div class="col-8 p-0 align-items-center">\
+                    <h3>\<b>' + Math.round(feature.properties.time / 60) + ' min</b>\</h3>\
+                  </div>\
+                </div>\
+              </div>\
+            </div>'
+            , { closeButton: false }
+            );
+          layer.openPopup();
+        }
+      }).addTo(map_dup));
+      
+      lefletMap = map_dup;
+      change_map(lefletMap);
     })
   }
 }

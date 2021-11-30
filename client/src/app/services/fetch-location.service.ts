@@ -7,8 +7,7 @@ import { map, catchError } from 'rxjs/operators';
 import { ProcessHttpmsgService } from "./process-httpmsg.service";
 
 import { Location } from "../shared/location";
-import { getPosi } from "../shared/current_location";
-import { propertyList } from "../shared/initial_location";
+import { getPosi } from "../shared/initial_location";
 import { Observable, of } from "rxjs";
 
 import { ItemDetails } from "../shared/itemDetails";
@@ -44,7 +43,7 @@ export class FetchLocationService {
 
   getroute(initial, final):Observable<any>{
     //alert(this.selectedItem.latitude + ' ' + this.selectedItem.longitude)
-    return this.http.get<any>(`https://api.geoapify.com/v1/routing?waypoints=${initial.latitude},${initial.longitude}|${final.latitude},${final.longitude}&mode=drive&apiKey=${environment.GeoAPIfy_KEY}`)
+    return this.http.get<any>(`https://api.geoapify.com/v1/routing?waypoints=${initial.latitude},${initial.longitude}|${final.latitude},${final.longitude}&mode=walk&apiKey=${environment.GeoAPIfy_KEY}`)
       .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 }
