@@ -7,11 +7,25 @@ $primary_2: #DFDFDF;
 $primary_3: #afadad;
 $primary_4: #939393;
 
+.navbar-toggler:not([disabled]):not(.disabled) {
+    width: auto;
+}
+
+// .btn:not([disabled]):not(.disabled) {
+//     margin-left: auto;
+//     margin-right: auto;
+// }
+
+
 .LEFT {
     background-color: $primary_1;
     color: $primary_2;
     height: 100vh;
     font-family: 'Ruda', sans-serif;
+}
+
+.add_margin {
+    margin-top: 85px;
 }
 
 .RIGHT {
@@ -119,4 +133,12 @@ $primary_4: #939393;
 
 .mat-input-element {
     font-family: 'Ruda', sans-serif;
+}
+
+.popup {
+    font-family: 'Ruda', sans-serif;
+}
+
+.leaflet-popup-content {
+    width: max-content;
 }

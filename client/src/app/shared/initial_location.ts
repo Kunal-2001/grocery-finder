@@ -1,14 +1,9 @@
-import { Location } from './location';
+var lng: number = 1;
+var lat: number = 2;
 
-var lng : number;
-var lat : number;
-
-var currentLoacation : Location;
+export function getPosi() {
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+}
  
-navigator.geolocation.getCurrentPosition((position) => { 
-    currentLoacation.fulladdress = "Current Location";
-    currentLoacation.longitude = position.coords.longitude;
-    currentLoacation.latitude = position.coords.latitude;
-});
-
-export var propertyList =[currentLoacation]

@@ -1,5 +1,5 @@
 <mat-form-field>
-  <input matInput type="text" [matAutocomplete]="auto" [formControl]="inputFieldFormControl" placeholder="Enter location here" />
+  <input matInput type="text" [matAutocomplete]="auto" [formControl]="inputFieldFormControl" placeholder="Enter Initial location here" />
   <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption>
     <mat-option *ngFor="let option of searchOptions | async" [value]="option.shortAddress" 
       (onSelectionChange)="optionSelectionChange(option, $event)"

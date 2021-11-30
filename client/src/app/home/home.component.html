@@ -1,29 +1,24 @@
 <app-header></app-header>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-12 col-sm-6 LEFT text-center d-flex align-items-center">
-            <div class="container">
+        <div class="col-12 col-sm-6 LEFT">
+            <div class="container add_margin">
                 <div class="row">
-                    <div class="col-12 mt-50 text-center align-items-center">
+                    <div class="col-12 text-center align-items-center">
                         <app-autocomplete (locationChange)="autocompleteChanged($event)"></app-autocomplete>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 text-center align-items-center">
+                    <div class="col-12" style="z-index: 1;">
                         <app-my-map></app-my-map>
-                        <!-- <ejs-maps id="maps-container" style="display:block" [zoomSettings]="zoomSettings" [centerPosition]="centerPosition">
-                            <e-layers>
-                                <e-layer [layerType]="layerType" [bingMapType]="bingMapType" [key]="key" [markerSettings]="markerSettings" [navigationLineSettings]="navigationLineSettings"></e-layer>
-                            </e-layers>
-                        </ejs-maps> -->
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-12 col-sm-6 RIGHT text-center d-flex align-items-center">
-            <div class="container">
+        <div class="col-12 col-sm-6 RIGHT">
+            <div class="container add_margin">
                 <div class="row">
-                    <div class="col-12 mt-50 text-center align-items-center">
+                    <div class="col-12 text-center align-items-center">
                         <app-itemsearch></app-itemsearch>
                     </div>
                     <div class="row m-0">

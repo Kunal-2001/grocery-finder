@@ -8,4 +8,5 @@ export class ItemDetails {
     longitude : number;
     stock : number;
     price : number;
+    fulladdress : string;
 }
